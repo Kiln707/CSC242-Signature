@@ -1,0 +1,3 @@
+/home/sswanson/Documents/NU/2024-08 - C++/signature/p8.2/cmake-build-debug/CMakeFiles/assignment_5.dir
+/home/sswanson/Documents/NU/2024-08 - C++/signature/p8.2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/sswanson/Documents/NU/2024-08 - C++/signature/p8.2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
