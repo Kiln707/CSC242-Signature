@@ -80,17 +80,12 @@ int main(int argc, char* argv[])
     const string alphabet = "abcdefghiklmnopqrstuvwxyz";
     char cipher[5][5];
     bool cipher_built = false;
-    bool decrypt = false;
     string data = "";
 
     for (int i = 1; i < argc; i++)
     {
         string arg = argv[i];
-        if (arg == "-d")
-        {
-            decrypt = true;
-        }
-        else if (arg.starts_with("-k"))
+        if (arg.starts_with("-k"))
         {
             // Getting key to build cipher
             string seed = arg.substr(2, arg.length());
