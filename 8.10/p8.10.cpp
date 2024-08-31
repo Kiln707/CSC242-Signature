@@ -1,3 +1,15 @@
+/* ---------------------------------------------------------------------------
+** I attest that this following code represents my own work and is subject to
+** the plagiarism policy found in the course syllabus.
+**
+** Class: 	CSC 242
+** Assignment: 	Lesson # 5 part 4
+** File: 	p8_10.cpp
+** Description: Encrypts/Decrypts input, using key and playfair cypher
+**
+** Author: 	Steven Swanson
+** Date: 	30 Aug 2024
+** -------------------------------------------------------------------------*/
 #include <iostream>
 #include <string>
 
@@ -16,6 +28,7 @@ void write_usage(const string program_file)
 
 int get_row(const char cipher[5][5], char character)
 {
+    // Get row for character in cipher
     if (character == 'j')
     {
         character = 'i';
@@ -34,6 +47,7 @@ int get_row(const char cipher[5][5], char character)
 }
 int get_col(const char cipher[5][5], char character)
 {
+    // Get column for character in cipher
     if (character == 'j')
     {
         character = 'i';
@@ -53,6 +67,7 @@ int get_col(const char cipher[5][5], char character)
 
 char get_swap_character(const char cipher[5][5], int target_row, int target_col, int alternate_row, int alternate_col)
 {
+    // Using the location of the two characters, return the character that is appropriate for en/de-cryption
     if (alternate_row == target_row || alternate_col == target_col)
     {
         return cipher[alternate_row][alternate_col];
@@ -116,7 +131,7 @@ int main(int argc, char* argv[])
     }
 
     int i = 0;
-    string output = "";
+    string output;
     // If data is uneven append Z to ensure input is encrypted.
     if (data.size() % 2 != 0)
     {
@@ -125,6 +140,7 @@ int main(int argc, char* argv[])
     // We know that data is even in size, so we can grab two at a time.
     while (i < data.size())
     {
+        // Gather needed data.
         char first = data[i];
         bool first_is_upper = isupper(first);
         const int first_row = get_row(cipher, tolower(first));
@@ -140,12 +156,20 @@ int main(int argc, char* argv[])
         if (second_col == -1){ return -1; }
         i++;
 
+        // Conduct en/de-cryption.
         first = get_swap_character(cipher, first_row, first_col, second_row, second_col);
         second = get_swap_character(cipher, second_row, second_col, first_row, first_col);
 
         if (first_is_upper){ first = toupper(first); }
         if (second_is_upper){ second = toupper(second); }
-        output += first + second;
+
+        // Convert back to string
+        string out_a(1, first);
+        string out_b(1, second);
+
+        // Add to output string.
+        output += out_a + out_b;
     }
+    // print out.
     cout << output << endl;
 }
